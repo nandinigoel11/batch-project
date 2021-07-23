@@ -5,6 +5,7 @@ import { FaSpinner } from "react-icons/fa";
 import * as yup from "yup";
 import { ErrorMessage, useFormik } from "formik";
 import Input from "../components/Input";
+import PrimaryButton from "../components/PrimaryButton";
 
 interface Props {
 }
@@ -37,7 +38,7 @@ const Login: React.FC<Props> = (Props) => {
       <div className="mx-20">
         <div className="px-10 text-left">
           <div>
-            <h1 className="pt-4 text-4xl font-semibold tracking-wider">Log In to <span className="text-indigo-600"> CORK</span></h1>
+            <h1 className="pt-4 text-4xl font-semibold tracking-wider text-gray-700">Log In to <span className="text-indigo-600"> CORK</span></h1>
             <h3 className="pt-2 tracking-wider">New Here? <Link to="/signup"> <span className="text-indigo-600 underline"> Create an account </span></Link></h3>
           </div>
           <form className="mt-16"
@@ -79,11 +80,7 @@ const Login: React.FC<Props> = (Props) => {
                 <label htmlFor="show-password">Show Password</label>
               </div>
               {isSubmitting && <FaSpinner className="w-6 h-6 animate-spin"></FaSpinner>}
-              <div>
-                <button
-                  type="submit"
-                  className="items-center w-20 h-10 tracking-tight text-white bg-indigo-600 rounded-lg">Log In</button>
-              </div>
+              <PrimaryButton className="w-20 h-10">Log In</PrimaryButton>
             </div>
             <div className="mt-8 space-x-2 text-center">
               <input id="logged-in" name="logged-in" type="checkbox" />
