@@ -44,6 +44,7 @@ const Login: React.FC<Props> = (Props) => {
           <form className="mt-16"
             onSubmit={handleSubmit}>
             <Input
+              theme="primary"
               Icon={HiUser}
               type="email"
               autoComplete="email"
@@ -55,6 +56,7 @@ const Login: React.FC<Props> = (Props) => {
             />
             <div className="pt-8">
               <Input
+              theme="primary"
                 Icon={HiLockClosed}
                 type="password"
                 required

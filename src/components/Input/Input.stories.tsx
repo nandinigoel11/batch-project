@@ -8,6 +8,9 @@ export default {
     title: "Input",
     component: Input,
     argTypes: {
+        theme: {
+            control: {type: "select"},
+        },
         Icon: {
             options: Object.keys(icons),
             mapping: icons,
