@@ -11,7 +11,7 @@ const PrimaryButton: FC<Props> = ({ className,theme, children, ...rest }) => {
         <div>
             <button
                 {...rest}
-                className={"items-center tracking-tight text-white w-20 h-10 rounded-lg "+ themeclasses + " " + className}
+                className={"items-center tracking-tight text-white rounded-lg "+ themeclasses + " " + className}
             >{children}</button>
         </div>
     );

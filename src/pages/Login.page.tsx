@@ -43,26 +43,19 @@ const Login: React.FC<Props> = (Props) => {
           </div>
           <form className="mt-16"
             onSubmit={handleSubmit}>
-            <div className="flex pb-2 space-x-3">
-              <span>
-                <HiUser className="text-indigo-600 w-7 h-7"></HiUser>
-              </span>
+            <Input
+              Icon={HiUser}
+              type="email"
+              autoComplete="email"
+              required
+              touched={touched.email}
+              error={errors.email}
+              {...getFieldProps("email")}
+              placeholder="Email Address" id="email"
+            />
+            <div className="pt-8">
               <Input
-                type="email"
-                autoComplete="email"
-                required
-                touched={touched.email}
-                error={errors.email}
-                {...getFieldProps("email")}
-                placeholder="Email Address" id="email"
-              />
-            </div>
-           
-            <div className="flex pt-8 pb-2 space-x-3 ">
-              <span>
-                <HiLockClosed className="text-indigo-600 w-7 h-7"></HiLockClosed>
-              </span>
-              <Input
+                Icon={HiLockClosed}
                 type="password"
                 required
                 touched={touched.password}
@@ -71,9 +64,7 @@ const Login: React.FC<Props> = (Props) => {
                 {...getFieldProps("password")}
                 placeholder="password" id="password"
               />
-              
             </div>
-          
             <div className="flex justify-between mt-8">
               <div className="space-x-2">
                 <input id="show-password" name="show-password" type="checkbox" />

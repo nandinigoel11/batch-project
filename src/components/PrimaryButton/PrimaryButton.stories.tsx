@@ -1,18 +1,22 @@
-
 import PrimaryButton from "./PrimaryButton";
 import "../../index.css";
 
-const xyz = {
+export default {
     title : "My Button",
     component: PrimaryButton,
+    argTypes: {
+        theme: {
+            control: {type: "select"},
+        },
+    },
 };
 
 const Template = (args: any) => 
     <PrimaryButton {...args}></PrimaryButton>;
 
-export const main:any = Template.bind({});
-main.args = {
+export const Main:any = Template.bind({});
+Main.args = {
     children: "Sign In",
+    className: " ",
 };
 
-export default xyz;
