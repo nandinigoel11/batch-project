@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { HiUser, HiLockClosed } from "react-icons/hi";
-import Input from "../components/Input";
+import Input from "../components/Input/Input";
 import { ErrorMessage, useFormik } from "formik";
 import * as yup from "yup";
-import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButton from "../components/PrimaryButton/PrimaryButton";
 
 interface Props {
 }
@@ -72,12 +72,12 @@ const Signup: FC<Props> = (Props) => {
               <input id="terms-and-cond" name="terms-and-cond" type="checkbox" />
               <label htmlFor="terms-and-cond" className="text-gray-400">I agree to the <span className="text-indigo-600">terms and conditions</span></label>
             </div>
-            <div className="flex items-center justify-between">
-            <div className="mt-6 space-x-2">
+            <div className="flex items-center justify-between mt-6">
+            <div className="space-x-2 ">
                 <input id="show-password" name="show-password" type="checkbox" />
                 <label htmlFor="show-password">Show Password</label>
                 </div>
-              <PrimaryButton className="h-10 w-28">Get Started!</PrimaryButton>
+              <PrimaryButton className="h-10 type-submit w-28">Get Started!</PrimaryButton>
               </div>
           </form>
           <p className="mt-12 text-center">© 2020 All Rights Reserved. <span className="text-indigo-600"> CORK</span> is a product of Designreset. <span className="text-indigo-600"> Cookie Preferences, Privacy,</span> and <span className="text-indigo-600"> Terms</span>.</p>

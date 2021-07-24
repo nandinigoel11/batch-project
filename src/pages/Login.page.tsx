@@ -4,8 +4,8 @@ import { HiUser, HiLockClosed } from "react-icons/hi";
 import { FaSpinner } from "react-icons/fa";
 import * as yup from "yup";
 import { ErrorMessage, useFormik } from "formik";
-import Input from "../components/Input";
-import PrimaryButton from "../components/PrimaryButton";
+import Input from "../components/Input/Input";
+import PrimaryButton from "../components/PrimaryButton/PrimaryButton";
 
 interface Props {
 }
@@ -80,7 +80,7 @@ const Login: React.FC<Props> = (Props) => {
                 <label htmlFor="show-password">Show Password</label>
               </div>
               {isSubmitting && <FaSpinner className="w-6 h-6 animate-spin"></FaSpinner>}
-              <PrimaryButton className="w-20 h-10">Log In</PrimaryButton>
+              <PrimaryButton className="w-20 h-10 type-submit">Log In</PrimaryButton>
             </div>
             <div className="mt-8 space-x-2 text-center">
               <input id="logged-in" name="logged-in" type="checkbox" />
