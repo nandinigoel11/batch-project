@@ -30,6 +30,7 @@ const Input: FC<Props> = ({ touched, error, className,theme, placeholder,Icon, i
 };
 
 Input.defaultProps = {
+    theme: "primary"
 }
 
 export default memo(Input);
