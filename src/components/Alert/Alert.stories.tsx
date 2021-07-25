@@ -28,6 +28,7 @@ export default {
 export const Main = (args:any) => <Alert {...args}></Alert>
 
 Main.args = {
-    children: "this is alert box"
+    children: "this is alert box",
+    classsName: "",
 };
 
