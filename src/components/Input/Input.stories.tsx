@@ -9,7 +9,7 @@ export default {
     component: Input,
     argTypes: {
         theme: {
-            control: {type: "select"},
+            control: { type: "select" },
         },
         Icon: {
             options: Object.keys(icons),
@@ -25,10 +25,11 @@ export default {
     },
 };
 
-export const Main =  (args:any) => <Input {...args}></Input>;
+export const Main = (args: any) => <Input {...args}></Input>;
 
 Main.args = {
     touched: false,
-        error: " ",
-        placeholder: " ",
+    error: " ",
+    placeholder: " ",
+    Icon: HiUser,
 };
