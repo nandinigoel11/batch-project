@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import {FC,memo} from "react";
 import { Link } from "react-router-dom";
+import { fetchGroups } from "../api";
 interface Props{
 }
 const Dashboard: FC<Props> = (Props) =>{
+  useEffect(() =>{
+    fetchGroups({status: "all-groups"});
+  }, []);
   return (
      <div>
        This is dashboard page.

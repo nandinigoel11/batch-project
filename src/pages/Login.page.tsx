@@ -6,6 +6,8 @@ import * as yup from "yup";
 import { ErrorMessage, useFormik } from "formik";
 import Input from "../components/Input/Input";
 import PrimaryButton from "../components/PrimaryButton/PrimaryButton";
+import {login} from "../api";
+
 
 interface Props {
 }
@@ -21,15 +23,12 @@ const Login: React.FC<Props> = (Props) => {
       email: yup.string().required().email(),
       password: yup.string().required().min(8)
     }),
-    onSubmit: (data, { setSubmitting }) => {
-      console.log("form submitting", data);
-      setTimeout(() => {
-        console.log("form submitted", data);
-        history.push("/dashboard");
-      }, 5000);
-
-    },
-  });
+    onSubmit: (data) => {
+     login(data).then(() => 
+     {history.push("/dashboard");
+    });
+  },
+});
 
 
 
