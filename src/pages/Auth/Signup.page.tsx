@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { HiUser, HiLockClosed } from "react-icons/hi";
-import Input from "../components/Input/Input";
+import Input from "../../components/Input/Input";
 import { ErrorMessage, useFormik } from "formik";
 import * as yup from "yup";
-import PrimaryButton from "../components/PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 
 interface Props {
 }
@@ -73,7 +73,7 @@ const Signup: FC<Props> = (Props) => {
                 <input id="show-password" name="show-password" type="checkbox" />
                 <label htmlFor="show-password">Show Password</label>
               </div>
-              <PrimaryButton className="h-10 type-submit w-28">Get Started!</PrimaryButton>
+              <PrimaryButton type="submit" className="h-10 type-submit w-28">Get Started!</PrimaryButton>
             </div>
           </form>
           <p className="mt-12 text-center">© 2020 All Rights Reserved. <span className="text-indigo-600"> CORK</span> is a product of Designreset. <span className="text-indigo-600"> Cookie Preferences, Privacy,</span> and <span className="text-indigo-600"> Terms</span>.</p>

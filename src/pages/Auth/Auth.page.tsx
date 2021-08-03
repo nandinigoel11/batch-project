@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { Route } from 'react-router-dom';
 import { Switch } from "react-router-dom";
-import AuthSection from "../components/AuthSection";
+import AuthSection from "../../components/AuthSection";
 import LoginPage from "./Login.page";
 
 import SignupPage from './Signup.page'

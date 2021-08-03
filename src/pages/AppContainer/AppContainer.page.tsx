@@ -3,7 +3,7 @@ import { Switch } from "react-router-dom";
 import DashboardPage from './Dashboard.page';
 import { Route } from 'react-router-dom';
 import RecordingsPage from './Recordings.page';
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import LecturePage from "./Lecture.page";
 
 
