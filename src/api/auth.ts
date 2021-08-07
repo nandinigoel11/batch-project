@@ -31,3 +31,12 @@ export const login = (data: LoginRequest) => {
 export const logout = () => {
     localStorage.removeItem(LS_AUTH_TOKEN);
 }
+
+interface meResponse{
+    data : User;
+}
+
+export const me = () =>{
+    const url = BASE_URL + "/me";
+    return axios.get<meResponse>(url).then((response) => (response.data.data))
+}

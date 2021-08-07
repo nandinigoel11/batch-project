@@ -3,16 +3,19 @@ import { Link, useHistory } from "react-router-dom";
 import { HiUser, HiLockClosed } from "react-icons/hi";
 import { FaSpinner } from "react-icons/fa";
 import * as yup from "yup";
-import { ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
 import Input from "../../components/Input/Input";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
-import {login} from "../../api/auth";
-
+import { login } from "../../api/auth";
+import { useDispatch } from "react-redux";
 
 interface Props {
 }
+
 const Login: React.FC<Props> = (Props) => {
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const { getFieldProps, handleSubmit, values, touched, isSubmitting, errors } = useFormik({
     initialValues: {
@@ -24,11 +27,12 @@ const Login: React.FC<Props> = (Props) => {
       password: yup.string().required().min(8)
     }),
     onSubmit: (data) => {
-     login(data).then(() => 
-     {history.push("/dashboard");
-    });
-  },
-});
+      login(data).then((u) => {
+        dispatch({ type: "me/login", payload: u });
+        history.push("/dashboard");
+      });
+    },
+  });
 
 
 
@@ -55,7 +59,7 @@ const Login: React.FC<Props> = (Props) => {
             />
             <div className="pt-8">
               <Input
-              theme="primary"
+                theme="primary"
                 Icon={HiLockClosed}
                 type="password"
                 required

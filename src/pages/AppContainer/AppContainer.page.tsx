@@ -6,10 +6,10 @@ import RecordingsPage from './Recordings.page';
 import Sidebar from "../../components/Sidebar";
 import LecturePage from "./Lecture.page";
 
-
 interface Props {
 }
-const AppContainer: FC<Props> = (Props) => {
+
+const AppContainer: FC<Props> = () => {
     return (
         <div className="flex flex-row">
         <Sidebar></Sidebar>
