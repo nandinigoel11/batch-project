@@ -13,7 +13,7 @@ const Input: FC<Props> = ({ touched, error, className,theme, placeholder,Icon, i
     return (
         <div className="flex pb-2 space-x-3">
             {Icon && <span>
-                <Icon className={" w-7 h-7 " + " " + themeclasses }/>
+                <Icon className={" w-7 h-7 " + " " + themeclasses}/>
               </span>}
         <div className="flex flex-col ">
             {id && placeholder && (<label htmlFor={id} className="sr-only">{placeholder}</label>)}
