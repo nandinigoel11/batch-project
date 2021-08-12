@@ -1,39 +1,35 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import { FC, memo } from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchGroups } from "../../api/groups";
+import { fetchGroups } from "../../middleware/groups.middleware";
 import Input from "../../components/Input/Input";
 import { useAppSelector } from "../../store";
 import { HiSearch } from "react-icons/hi";
-import { groupsActions } from "../../actions/groups.actions";
+import { groupLoadingSelector, groupQuerySelector, groupsCurrentQuerySelector } from "../../selectors/groups.selectors";
+import { meSelector } from "../../selectors/auth.selectors";
+import { FaSpinner } from "react-icons/fa";
 
 interface Props {
 }
 
 const Dashboard: FC<Props> = () => {
-  const userFirstName = useAppSelector((state) => state.users.byId[state.auth.id!].first_name);
+  const user = useAppSelector(meSelector);
 
-  const query = useAppSelector(state => state.groups.query);
+  const loading = useAppSelector(groupLoadingSelector);
 
-  const groups = useAppSelector(state => {
-    const groupIds = state.groups.queryMap[state.groups.query] || [];
-    const groups = groupIds.map(id => state.groups.byId[id]);
-    return groups;
-  });
+  const query = useAppSelector(groupQuerySelector);
 
-  useEffect(() => {
-    fetchGroups({ status: "all-groups", query }).then(groups => groupsActions.queryCompleted(query, groups));
-  }, [query]);
+  const groups = useAppSelector(groupsCurrentQuerySelector);
+
 
   return (
     <div className="mx-auto">
-      <div className="items-center h-10 py-1 mx-4 my-2 text-lg font-semibold text-black bg-gray-200 border rounded-lg ">Welcome! {userFirstName}</div>
+      <div className="items-center h-10 py-1 mx-4 my-2 text-lg font-semibold text-black bg-gray-200 border rounded-lg ">Welcome! {user!.first_name}</div>
       <Input Icon={HiSearch} type="text" placeholder="Search" value={query} onChange={(e) => {
-        groupsActions.query(e.target.value);
+        fetchGroups({query: e.target.value, status: "all-groups"});
       }}
       ></Input>
+      <div>
+      {loading && <FaSpinner className="w-10 h-10 mx-auto animate-spin"></FaSpinner>}</div>
       <div>
         {groups.map((group) => (
           <div className="px-2 py-4 my-2 bg-gray-200 border border-black rounded-lg ">{group.name} <br /> {group.description}</div>

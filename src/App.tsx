@@ -2,19 +2,19 @@ import { useEffect } from 'react';
 import { FC,  Suspense } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { authActions } from './actions/auth.actions';
-import { me } from './api/auth';
+import { me } from './middleware/auth.middleware';
 import { LS_AUTH_TOKEN } from './api/base';
 import AppContainerPageLazy from './pages/AppContainer/AppContainer.Lazy';
 import AuthPageLazy from './pages/Auth/Auth.Lazy';
 import NotFoundPage from './pages/NotFound.page';
+import { meSelector } from './selectors/auth.selectors';
 import { useAppSelector } from './store';
 
 interface Props {
 }
 
 const App: FC<Props> = () => {
-  const user = useAppSelector((state) => state.auth.id && state.users.byId[state.auth.id]);
+  const user = useAppSelector(meSelector);
   
   const token = localStorage.getItem(LS_AUTH_TOKEN);
 
@@ -22,7 +22,7 @@ const App: FC<Props> = () => {
      if (!token){
        return;
      }
-     me().then((u) => authActions.fetch(u));
+     me();
   }, []);
 
   if(!user && token){

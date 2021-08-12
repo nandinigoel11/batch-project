@@ -7,7 +7,6 @@ import { useFormik } from "formik";
 import Input from "../../components/Input/Input";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import { login } from "../../api/auth";
-import { useDispatch } from "react-redux";
 import { authActions } from "../../actions/auth.actions";
 
 interface Props {
