@@ -4,7 +4,7 @@ import { fetchGroups } from "../../middleware/groups.middleware";
 import Input from "../../components/Input/Input";
 import { useAppSelector } from "../../store";
 import { HiOutlineEmojiSad, HiSearch } from "react-icons/hi";
-import { groupLoadingSelector, groupQuerySelector, groupsCurrentQuerySelector } from "../../selectors/groups.selectors";
+import { groupsLoadingSelector, groupQuerySelector, groupsCurrentQuerySelector } from "../../selectors/groups.selectors";
 import { meSelector } from "../../selectors/auth.selectors";
 import { FaSpinner } from "react-icons/fa";
 
@@ -14,7 +14,7 @@ interface Props {
 const Dashboard: FC<Props> = () => {
   const user = useAppSelector(meSelector);
 
-  const loading = useAppSelector(groupLoadingSelector);
+  const loading = useAppSelector(groupsLoadingSelector);
 
   const query = useAppSelector(groupQuerySelector);
 
