@@ -1,6 +1,7 @@
 import {FC,memo} from "react";
 import PrimaryButton from "./PrimaryButton/PrimaryButton";
 import {logout} from "../api/auth";
+import { Link } from "react-router-dom";
 
 
 interface Props{

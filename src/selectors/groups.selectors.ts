@@ -9,7 +9,7 @@ export const groupQueryMapSelector = createSelector([groupStateSelector], (group
 
 const groupIdSelector = createSelector([groupStateSelector], (groupState) => groupState.byId);
 
-const groupLoadingQUerySelector = createSelector([groupStateSelector], (groupState) => groupState.loadingQuery);
+export const groupLoadingQUerySelector = createSelector([groupStateSelector], (groupState) => groupState.loadingQuery);
 
 export const groupLoadingSelector = createSelector([groupQuerySelector, groupLoadingQUerySelector], (query, loadingMap) => loadingMap[query]);
 
