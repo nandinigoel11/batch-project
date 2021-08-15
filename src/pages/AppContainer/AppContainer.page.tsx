@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import RecordingsPage from './Recordings.page';
 import Sidebar from "../../components/Sidebar";
 import LecturePage from "./Lecture.page";
+import GroupDetailPage from "./GroupDetailPage.page";
 
 interface Props {
 }
@@ -16,6 +17,9 @@ const AppContainer: FC<Props> = () => {
         <Switch>
             <Route path="/dashboard">
                 <DashboardPage></DashboardPage>
+            </Route>
+            <Route path="/groups/:groupId">
+                <GroupDetailPage></GroupDetailPage>
             </Route>
             <Route path="/recordings">
                 <RecordingsPage></RecordingsPage>

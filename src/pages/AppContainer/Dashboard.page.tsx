@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useAppSelector } from "../../store";
 import { HiOutlineEmojiSad, HiSearch } from "react-icons/hi";
 import { groupsLoadingSelector, groupQuerySelector, groupsCurrentQuerySelector } from "../../selectors/groups.selectors";
@@ -23,6 +23,8 @@ const Dashboard: FC<Props> = () => {
 
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
 
   return (
     <div className="mx-auto">
@@ -32,12 +34,17 @@ const Dashboard: FC<Props> = () => {
       }}
       ></Input>
       <div>
-      {loading && <FaSpinner className="w-10 h-10 mx-auto animate-spin"></FaSpinner>}</div>
+        {loading && <FaSpinner className="w-10 h-10 mx-auto animate-spin"></FaSpinner>}</div>
       <div>
         {groups.map((group) => (
-          <div className="px-2 py-4 my-2 bg-gray-200 border border-black rounded-lg ">{group.name} <br /> {group.description}</div>
+          <div key={group.id}
+            className="px-2 py-4 my-2 bg-gray-200 border border-black rounded-lg ">
+              <Link to={"/groups/"+group.id}>
+            {group.name}</Link>
+            <br />
+            {group.description}</div>
         ))}
-        {!loading && groups.length === 0 && <div className="py-4 my-4 border border-black rounded-full px-7">   <div> <HiOutlineEmojiSad className="mx-auto w-7 h-7"></HiOutlineEmojiSad></div> Oops! The data you are looking for does not exist.</div> }
+        {!loading && groups.length === 0 && <div className="py-4 my-4 border border-black rounded-full px-7">   <div> <HiOutlineEmojiSad className="mx-auto w-7 h-7"></HiOutlineEmojiSad></div> Oops! The data you are looking for does not exist.</div>}
       </div>
       <Link to="/recordings"><span className="mt-4 text-indigo-400 underline">Go to recordings section</span></Link>
     </div>
