@@ -1,12 +1,13 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-import { fetchGroups } from "../../middleware/groups.middleware";
-import Input from "../../components/Input/Input";
 import { useAppSelector } from "../../store";
 import { HiOutlineEmojiSad, HiSearch } from "react-icons/hi";
 import { groupsLoadingSelector, groupQuerySelector, groupsCurrentQuerySelector } from "../../selectors/groups.selectors";
 import { meSelector } from "../../selectors/auth.selectors";
 import { FaSpinner } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { queryChangedAction } from "../../actions/groups.actions";
+import Input from "../../components/Input/Input";
 
 interface Props {
 }
@@ -20,12 +21,14 @@ const Dashboard: FC<Props> = () => {
 
   const groups = useAppSelector(groupsCurrentQuerySelector);
 
+  const dispatch = useDispatch();
+
 
   return (
     <div className="mx-auto">
       <div className="items-center h-10 py-1 mx-4 my-2 text-lg font-semibold text-black bg-gray-200 border rounded-lg ">Welcome! {user!.first_name}</div>
       <Input Icon={HiSearch} type="text" placeholder="Search" value={query} onChange={(e) => {
-        fetchGroups({query: e.target.value, status: "all-groups"});
+        dispatch(queryChangedAction(e.target.value));
       }}
       ></Input>
       <div>

@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { FC,  Suspense } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { me } from './middleware/auth.middleware';
+import { authActions } from './actions/auth.actions';
+import { me } from './api/auth';
 import { LS_AUTH_TOKEN } from './api/base';
 import AppContainerPageLazy from './pages/AppContainer/AppContainer.Lazy';
 import AuthPageLazy from './pages/Auth/Auth.Lazy';
@@ -22,7 +23,7 @@ const App: FC<Props> = () => {
      if (!token){
        return;
      }
-     me();
+     me().then(u => authActions.fetch(u));
   }, []);
 
   if(!user && token){
